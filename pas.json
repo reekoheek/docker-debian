@@ -1,0 +1,19 @@
+{
+    "name": "xinix-technology/debian",
+    "profile": "docker",
+
+    "docker": {
+        "containers": {
+            "root": {
+
+            }
+        }
+    },
+
+    "tasks": {
+        "deploy": [
+            ["docker", "build", "-t", "docker:5000/xinix-technology/debian", "."],
+            ["docker", "push", "docker:5000/xinix-technology/debian"]
+        ]
+    }
+}

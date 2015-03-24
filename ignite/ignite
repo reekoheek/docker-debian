@@ -1,0 +1,28 @@
+#!/bin/bash
+echo "-> IGNITE:" $@
+
+IGNITE_DIR="/etc/ignite.d"
+
+if [ -d "$IGNITE_DIR" ]; then
+    ls "$IGNITE_DIR" | while read f; do
+        fp="$IGNITE_DIR/$f"
+        if [ -f "$fp" ]; then
+            echo "-> running script" $f
+            /bin/sh -e $fp
+        fi
+    done
+fi
+
+if [ "$PAS_PLATFORM_ARCH" != "" ]; then
+    if [ -d "$IGNITE_DIR/$PAS_PLATFORM_ARCH" ]; then
+        ls "$IGNITE_DIR/$PAS_PLATFORM_ARCH" | while read f; do
+            fp="$IGNITE_DIR/$PAS_PLATFORM_ARCH/$f"
+            if [ -f "$fp" ]; then
+                echo "-> running script" $f
+                /bin/sh -e $fp
+            fi
+        done
+    fi
+fi
+
+$@
