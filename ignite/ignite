@@ -25,4 +25,16 @@ if [ "$PAS_PLATFORM_ARCH" != "" ]; then
     fi
 fi
 
+if [ "$PAS_ENV" != "" ]; then
+    if [ -d "$IGNITE_DIR/$PAS_ENV" ]; then
+        ls "$IGNITE_DIR/$PAS_ENV" | while read f; do
+            fp="$IGNITE_DIR/$PAS_ENV/$f"
+            if [ -f "$fp" ]; then
+                echo "-> running script" $f
+                /bin/sh -e $fp
+            fi
+        done
+    fi
+fi
+
 $@
