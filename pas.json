@@ -11,8 +11,10 @@
     },
 
     "tasks": {
+        "install": [
+            ["docker", "build", "-t", "docker:5000/xinix-technology/debian", "."]
+        ],
         "deploy": [
-            ["docker", "build", "-t", "docker:5000/xinix-technology/debian", "."],
             ["docker", "push", "docker:5000/xinix-technology/debian"]
         ]
     }
