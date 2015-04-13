@@ -10,6 +10,6 @@ RUN echo "Acquire::http { Proxy \"http://192.168.1.10:3142\"; };" > /etc/apt/apt
     echo "deb http://kambing.ui.ac.id/debian-security/ wheezy/updates main" >> /etc/apt/sources.list && \
     apt-get update -y
 
-ADD ignite /ignite
+COPY ignite /ignite
 
 ENTRYPOINT ["/ignite/ignite"]
